@@ -24,19 +24,29 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "New React Router App" },
+    { name: "description", content: "Welcome to React Router!" },
+  ];
+}
+
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="bg-white">
+    <html lang="en" className="bg-white h-full">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body>
-        <div className="flex gap-10 p-5">
+      <body className="h-full">
+        <div className="h-full flex flex-col md:flex-row gap-10">
           <Header />
-          {children}
+          <main className="flex-1 p-5">
+            {children}
+          </main>
         </div>
         <ScrollRestoration />
         <Scripts />
